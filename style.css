@@ -17,23 +17,29 @@
 :root {
     --bg-color: #f8fafc;        /* A very light, cool gray for the background */
     --panel-bg: #ffffff;        /* Pure white for our sidebar */
-    --text-primary: #1e293b;    /* Dark gray for text - easier to read than pure black */
-    --text-secondary: #475569;
-    --accent-color: #3b82f6;    /* A nice blue for buttons and accents */
-    --accent-hover: #2563eb;
-    --border-color: #e2e8f0;
+    --text-primary: #000000;    /* Black for text */
+    --text-secondary: #595959;  /* Secondary text / second accent color */
+    --accent-color: #8989eb;    /* Main accent color for buttons and accents */
+    --accent-hover: #7575d6;
+    --border-color: #f7f7f7;    /* Light border color */
 }
 
 /* 3. Global Typography */
 body {
-    /* We use a system font stack so it looks good on any device without loading external fonts */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* Body text updated to Arial or Calibri */
+    font-family: Arial, Calibri, sans-serif;
     color: var(--text-primary);
     background-color: var(--bg-color);
     line-height: 1.6;
     /* Ensure the body takes up the full height of the screen and hides any overflow */
     height: 100vh;
     overflow: hidden; 
+}
+
+/* Add Oswald font for headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
 }
 
 /* 
@@ -64,11 +70,27 @@ body {
 .tutorial-panel header {
     padding: 1.5rem;
     border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tutorial-panel header a {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    width: 85px;
+    height: auto;
+    object-fit: contain;
 }
 
 .tutorial-panel header h1 {
     font-size: 1.5rem;
     color: var(--text-primary);
+    margin: 0;
+    line-height: 1.1;
 }
 
 .lesson-content {
