@@ -1,0 +1,206 @@
+/* style.css */
+
+/* 
+  1. Base reset: This removes default margins and padding that browsers add, 
+  and ensures borders don't increase the total width/height of our elements.
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+  2. Variables: We define some colors and sizes we'll reuse throughout the app.
+  This makes it easy to change the "theme" later. 
+*/
+:root {
+    --bg-color: #f8fafc;        /* A very light, cool gray for the background */
+    --panel-bg: #ffffff;        /* Pure white for our sidebar */
+    --text-primary: #1e293b;    /* Dark gray for text - easier to read than pure black */
+    --text-secondary: #475569;
+    --accent-color: #3b82f6;    /* A nice blue for buttons and accents */
+    --accent-hover: #2563eb;
+    --border-color: #e2e8f0;
+}
+
+/* 3. Global Typography */
+body {
+    /* We use a system font stack so it looks good on any device without loading external fonts */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    /* Ensure the body takes up the full height of the screen and hides any overflow */
+    height: 100vh;
+    overflow: hidden; 
+}
+
+/* 
+  4. Main Layout 
+  We use CSS Grid to easily split the screen into two columns.
+*/
+.app-container {
+    display: grid;
+    /* 
+      This is the magic: 
+      - The first column (sidebar) takes up 350px width.
+      - The second column (simulation) takes up 1fr (1 fraction = the rest of the available space).
+    */
+    grid-template-columns: 350px 1fr;
+    height: 100vh;
+}
+
+/* 5. Tutorial Panel (Sidebar) */
+.tutorial-panel {
+    background-color: var(--panel-bg);
+    border-right: 1px solid var(--border-color);
+    /* Flexbox inside the sidebar so we can stack header, main content, and footer vertically */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tutorial-panel header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tutorial-panel header h1 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.lesson-content {
+    /* 
+      flex-grow: 1 means this middle section will expand to fill all available space, 
+      pushing the footer to the bottom.
+    */
+    flex-grow: 1;
+    padding: 1.5rem;
+    overflow-y: auto; /* Adds a scrollbar if the lesson text gets too long */
+}
+
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.lesson-header h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+}
+
+.progress-indicator {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-color: var(--border-color);
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.lesson-step {
+    background-color: var(--bg-color);
+    padding: 1.25rem;
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid var(--border-color);
+    
+    /* Animation defaults */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* When Javascript adds this class, it gracefully fades into view */
+.lesson-step.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lesson-step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.lesson-step p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.tutorial-panel footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: #fbfbfc;
+    
+    /* Use flexbox to easily align the multiple buttons */
+    display: flex;
+    gap: 10px;
+}
+
+/* 6. Buttons */
+.primary-btn {
+    flex: 2; /* The primary button gets twice the space of the secondary buttons */
+    padding: 0.75rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    /* transition makes the hover effect smooth */
+    transition: background-color 0.2s ease, transform 0.1s ease; 
+}
+
+.primary-btn:hover:not(:disabled) {
+    background-color: var(--accent-hover);
+}
+
+.primary-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.secondary-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background-color: var(--panel-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 7. Simulation Container */
+.simulation-container {
+    height: 100%;
+    width: 100%;
+    /* We add a subtle inner shadow so it looks slightly deeper than the sidebar */
+    box-shadow: inset 5px 0 10px rgba(0,0,0,0.03); 
+}
+
+/* 
+  Make the iframe take up the entire container.
+  We remove the default border so it looks seamless.
+*/
+.simulation-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block; 
+}
