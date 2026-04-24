@@ -10,7 +10,7 @@ The lessons will be useful for students in the 4th and 5th grades, targeted for 
 
 ## Next Steps
 
-- [ ] Implement an “ask AI” button for tutoring. This will probably be an easy step for an AI agent to implement.
+- [ ] Implement an “ask AI” button for tutoring.
 - [ ] Finish all the lessons with explanations and clear instructions
 - [ ] Add a translation feature? Maybe not complete 1-to-1 translation but more inline with ESOL standards.
 - [ ] Verify it works when using a new browser, should never require logging into an account to use the site.

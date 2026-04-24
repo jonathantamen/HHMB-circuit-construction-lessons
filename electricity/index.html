@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuit Construction Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- We link our external CSS file here so the browser knows how to style our page -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar for Lesson Text -->
+        <aside class="tutorial-panel">
+            <header>
+                <a href="https://helpinghandsmb.org" target="_blank" rel="noopener noreferrer">
+                    <img src="../resources/HHMB%20Logo%20Square%20w%20Text%20png.png" alt="HHMB Logo" class="brand-logo">
+                </a>
+                <h1>Circuit Basics</h1>
+            </header>
+            
+            <main class="lesson-content">
+                <div class="lesson-header">
+                    <h2>Lesson Guide</h2>
+                    <span id="progress-text" class="progress-indicator"></span>
+                </div>
+                
+                <!-- This is the container we'll animate and inject data into using JS -->
+                <section class="lesson-step" id="step-container">
+                    <h3 id="step-title">Loading...</h3>
+                    <p id="step-content">Please wait.</p>
+                </section>
+            </main>
+
+            <footer>
+                <button id="reset-btn" class="secondary-btn">Reset</button>
+                <button id="prev-btn" class="secondary-btn" disabled>Previous</button>
+                <button id="next-btn" class="primary-btn">Next Step</button>
+            </footer>
+        </aside>
+
+        <!-- Main Simulation Area -->
+        <section class="simulation-container">
+            <!-- The iframe embeds another website (the PhET sim) directly into ours -->
+            <iframe 
+                src="https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html?screens=1" 
+                title="Circuit Construction Kit DC Simulation"
+                allowfullscreen>
+            </iframe>
+        </section>
+    </div>
+
+    <!-- We link our Javascript file at the bottom of the body so it loads after the HTML -->
+    <script src="script.js"></script>
+</body>
+</html>
